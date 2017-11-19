@@ -8,6 +8,7 @@ void KinectBodyJointVeiwer::imshowBodyJoint(cv::Mat& mat)
 	{
 		if (isTrackedArray[i])
 		{
+			++playerCount;
 			for (int j = 0; j < 25; j++)
 			{
 				ColorSpacePoint colorSpacePoint;
@@ -32,4 +33,23 @@ void KinectBodyJointVeiwer::update()
 {
 	upDateImage();
 	upDateJointData();
+}
+
+std::tuple<float, float> KinectBodyJointVeiwer::getCameraSpacePlayerPositionPosition()
+{
+	for (int i = 0; i < 6; i++)
+	{
+		if (isTrackedArray[i])
+		{
+			float x = jointArray[i][JointType::JointType_SpineMid].Position.X;
+			float z = jointArray[i][JointType::JointType_SpineMid].Position.Z;
+			return std::make_tuple(x,z);
+		}
+	}
+	return std::make_tuple(0.0f,0.0f);
+}
+
+int KinectBodyJointVeiwer::getPlayerNum()
+{
+	return playerCount;
 }
