@@ -38,7 +38,7 @@ void KinectBodyFrameAPI::upDateJointData() {
 		return;
 	}
 	else {
-		std::cout << "hoge" << std::endl;
+		//std::cout << "hoge" << std::endl;
 		//std::getchar();
 	}
 	

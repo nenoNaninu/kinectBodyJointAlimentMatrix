@@ -43,7 +43,8 @@ int main()
 		key = waitKey(1);
 		kbj.update();
 		kbj.imshowBodyJoint(mat);
-		imshow("img", mat);
+		cv::resize(mat, mat, cv::Size(mat.cols / 2, mat.rows / 2));
+		imshow("view", mat);
 
 		if (key == 's')//set
 		{

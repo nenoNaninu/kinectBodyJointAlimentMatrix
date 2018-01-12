@@ -4,6 +4,7 @@
 void KinectBodyJointVeiwer::imshowBodyJoint(cv::Mat& mat)
 {
 	queryColorImage(mat);
+	playerCount = 0;
 	for (int i = 0; i < 6; i++)
 	{
 		if (isTrackedArray[i])
@@ -41,7 +42,7 @@ std::tuple<float, float> KinectBodyJointVeiwer::getCameraSpacePlayerPositionPosi
 	{
 		if (isTrackedArray[i])
 		{
-			float x = jointArray[i][JointType::JointType_SpineMid].Position.X;
+			float x = -jointArray[i][JointType::JointType_SpineMid].Position.X;
 			float z = jointArray[i][JointType::JointType_SpineMid].Position.Z;
 			return std::make_tuple(x,z);
 		}
